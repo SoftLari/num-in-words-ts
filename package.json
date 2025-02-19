@@ -1,5 +1,5 @@
 {
-  "name": "@csimon/num-in-words-ts",
+  "name": "@softlari/num-in-words-ts",
   "version": "1.0.0",
   "description": "Convert numbers to words in multiple languages - TypeScript port of num2words",
   "main": "dist/index.js",
@@ -18,11 +18,11 @@
     "internationalization",
     "multilingual"
   ],
-  "author": "charlisim",
+  "author": "softlari",
   "license": "LGPL-2.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/csimon/num-in-words-ts.git"
+    "url": "git+https://github.com/SoftLari/num-in-words-ts.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
