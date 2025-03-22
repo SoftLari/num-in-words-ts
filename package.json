@@ -1,6 +1,6 @@
 {
   "name": "num-in-words-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert numbers to words in multiple languages - TypeScript port of num2words",
   "type": "module",
   "main": "dist/index.cjs.js",
