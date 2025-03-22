@@ -1,5 +1,6 @@
 import { Num2WordBase, CurrencyData } from "../base";
-import { NumWordPair, NumWordList, CurrencyOptions } from "../types";
+import { NumWordPair, NumWordList } from "../types";
+import { CurrencyOptions } from "../types";
 
 export class Num2WordEN extends Num2WordBase {
   private ords: { [key: string]: string } = {

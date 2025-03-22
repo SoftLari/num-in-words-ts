@@ -1,6 +1,7 @@
 import { Num2WordEN } from "./lang/en";
+import { Num2WordES } from "./lang/es";
 
-export { Num2WordEN };
+export { Num2WordEN, Num2WordES };
 
 // Default instance for English
 const defaultConverter = new Num2WordEN();
