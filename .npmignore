@@ -1,0 +1,32 @@
+# Source files
+src/**/*.test.ts
+**/*.spec.ts
+**/__tests__/
+**/__mocks__/
+
+# Config files
+.github/
+.vscode/
+.editorconfig
+.eslintrc*
+.prettier*
+tsconfig.json
+tsconfig.cli.json
+vite.config.ts
+jest.config.js
+vitest.config.ts
+.gitignore
+
+# Docs and examples
+docs/
+examples/
+scripts/
+*.md
+!README.md
+!LICENSE
+!CHANGELOG.md
+
+# Development tools
+node_modules/
+coverage/
+.nyc_output/ 
