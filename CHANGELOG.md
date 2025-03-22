@@ -8,28 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.3] - 2025-03-22
 
 ### Added
-- 
-
-### Changed
-- 
-
-### Fixed
-- 
-
-## [1.0.2] - 2025-03-22
-
-### Added
-- 
-
-### Changed
-- 
-
-### Fixed
-- 
-
-## [1.0.1] - 2024-03-22
-
-### Added
 
 - Support for currency conversion in CLI with new options:
   - `-c, --currency <code>` for currency specification (e.g., EUR, USD, GTQ)
