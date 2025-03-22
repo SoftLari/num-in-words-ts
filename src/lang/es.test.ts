@@ -27,9 +27,17 @@ describe("Num2WordES", () => {
       [1000, "mil"],
       [1001, "mil uno"],
       [1234, "mil doscientos treinta y cuatro"],
+      [100000, "cien mil"],
+      [250000, "doscientos cincuenta mil"],
       [1000000, "un millon"],
+      [1000001, "un millon uno"],
       [2000000, "dos millones"],
+      [2500000, "dos millones quinientos mil"],
       [2000001, "dos millones uno"],
+      [
+        123456789,
+        "ciento veintitrés millones cuatrocientos cincuenta y seis mil setecientos ochenta y nueve",
+      ],
       [-1, "menos uno"],
       [-999, "menos novecientos noventa y nueve"],
     ];
@@ -202,6 +210,42 @@ describe("Num2WordES", () => {
         value: 1.0,
         options: { currency: "GTQ", showZeroCents: true },
         expected: "un quetzal exacto",
+      },
+      // Test complex large numbers with GTQ
+      {
+        value: 2525520,
+        options: { currency: "GTQ" },
+        expected:
+          "dos millones quinientos veinticinco mil quinientos veinte quetzales exactos",
+      },
+      {
+        value: 2525520.59,
+        options: { currency: "GTQ" },
+        expected:
+          "dos millones quinientos veinticinco mil quinientos veinte quetzales con cincuenta y nueve centavos",
+      },
+      {
+        value: 10000001.01,
+        options: { currency: "GTQ" },
+        expected: "diez millones uno quetzales con uno centavo",
+      },
+      {
+        value: 123456789.99,
+        options: { currency: "GTQ" },
+        expected:
+          "ciento veintitrés millones cuatrocientos cincuenta y seis mil setecientos ochenta y nueve quetzales con noventa y nueve centavos",
+      },
+      {
+        value: 987654321.45,
+        options: { currency: "GTQ" },
+        expected:
+          "novecientos ochenta y siete millones seiscientos cincuenta y cuatro mil trescientos veintiuno quetzales con cuarenta y cinco centavos",
+      },
+      {
+        value: 1234567.89,
+        options: { currency: "GTQ" },
+        expected:
+          "un millon doscientos treinta y cuatro mil quinientos sesenta y siete quetzales con ochenta y nueve centavos",
       },
       // Test without cents
       {

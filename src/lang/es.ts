@@ -252,10 +252,7 @@ export class Num2WordES extends Num2WordBase {
           return [[this.CARDINAL_WORDS[1000], 1000]];
         }
         return [
-          [
-            `${this.CARDINAL_WORDS[thousands]} ${this.CARDINAL_WORDS[1000]}`,
-            value,
-          ],
+          [`${this.toCardinal(thousands)} ${this.CARDINAL_WORDS[1000]}`, value],
         ];
       }
       if (thousands === 1) {
@@ -263,7 +260,7 @@ export class Num2WordES extends Num2WordBase {
       }
       return [
         [
-          `${this.CARDINAL_WORDS[thousands]} ${this.CARDINAL_WORDS[1000]}`,
+          `${this.toCardinal(thousands)} ${this.CARDINAL_WORDS[1000]}`,
           thousands * 1000,
         ],
         ...this.splitnum(remainder),
@@ -278,7 +275,7 @@ export class Num2WordES extends Num2WordBase {
       }
       return [
         [
-          `${this.CARDINAL_WORDS[millions]} ${this.CARDINAL_WORDS[1000000]}es`,
+          `${this.toCardinal(millions)} ${this.CARDINAL_WORDS[1000000]}es`,
           value,
         ],
       ];
@@ -291,7 +288,7 @@ export class Num2WordES extends Num2WordBase {
     }
     return [
       [
-        `${this.CARDINAL_WORDS[millions]} ${this.CARDINAL_WORDS[1000000]}es`,
+        `${this.toCardinal(millions)} ${this.CARDINAL_WORDS[1000000]}es`,
         millions * 1000000,
       ],
       ...this.splitnum(remainder),
