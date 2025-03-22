@@ -377,18 +377,29 @@ export class Num2WordES extends Num2WordBase {
     }
 
     // Convert integer part
-    const integerWords = this.toCardinal(integerPart);
+    let integerWords = this.toCardinal(integerPart);
+
+    // Use "un" instead of "uno" for currency values
+    if (integerPart === 1) {
+      integerWords = "un";
+    }
+
     result +=
       integerWords +
       " " +
       (integerPart === 1 ? currencyData.singular : currencyData.plural);
+
+    // Special case for GTQ with zero cents
+    if (finalOptions.currency === "GTQ" && decimalPart === 0) {
+      return result + (integerPart === 1 ? " exacto" : " exactos");
+    }
 
     // Add cents if requested
     if (finalOptions.cents && (decimalPart > 0 || finalOptions.showZeroCents)) {
       const centsWords = this.toCardinal(decimalPart);
       result +=
         " " +
-        finalOptions.separator +
+        (finalOptions.separator || "con") +
         " " +
         centsWords +
         " " +

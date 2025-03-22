@@ -1,4 +1,4 @@
-import { describe, expect, test, beforeEach, it } from "@jest/globals";
+import { describe, expect, test, beforeEach, it } from "vitest";
 import { Num2WordES } from "./es";
 import { CurrencyOptions } from "../types";
 
@@ -91,17 +91,17 @@ describe("Num2WordES", () => {
     }
 
     const testCases: TestCase[] = [
-      { value: 1, options: { currency: "EUR" }, expected: "uno euro" },
+      { value: 1, options: { currency: "EUR" }, expected: "un euro" },
       { value: 2, options: { currency: "EUR" }, expected: "dos euros" },
       {
         value: 1.5,
         options: { currency: "EUR" },
-        expected: "uno euro con cincuenta céntimos",
+        expected: "un euro con cincuenta céntimos",
       },
       {
         value: 1.99,
         options: { currency: "EUR" },
-        expected: "uno euro con noventa y nueve céntimos",
+        expected: "un euro con noventa y nueve céntimos",
       },
       {
         value: 2.05,
@@ -111,14 +111,14 @@ describe("Num2WordES", () => {
       {
         value: -1.5,
         options: { currency: "EUR" },
-        expected: "menos uno euro con cincuenta céntimos",
+        expected: "menos un euro con cincuenta céntimos",
       },
-      { value: 1, options: { currency: "USD" }, expected: "uno dólar" },
+      { value: 1, options: { currency: "USD" }, expected: "un dólar" },
       { value: 2, options: { currency: "USD" }, expected: "dos dólares" },
       {
         value: 1.5,
         options: { currency: "USD" },
-        expected: "uno dólar con cincuenta centavos",
+        expected: "un dólar con cincuenta centavos",
       },
       {
         value: 2.05,
@@ -128,7 +128,7 @@ describe("Num2WordES", () => {
       {
         value: 1,
         options: { currency: "GBP" },
-        expected: "uno libra esterlina",
+        expected: "un libra esterlina",
       },
       {
         value: 2,
@@ -138,79 +138,76 @@ describe("Num2WordES", () => {
       {
         value: 1.5,
         options: { currency: "GBP" },
-        expected: "uno libra esterlina con cincuenta peniques",
+        expected: "un libra esterlina con cincuenta peniques",
       },
       {
         value: 2.05,
         options: { currency: "GBP" },
         expected: "dos libras esterlinas con cinco peniques",
       },
-      // Test GTQ currency
-      { value: 1, options: { currency: "GTQ" }, expected: "uno quetzal" },
-      { value: 2, options: { currency: "GTQ" }, expected: "dos quetzales" },
+      // Test GTQ currency with decimal values (not affected by "exacto")
       {
         value: 1.5,
         options: { currency: "GTQ" },
-        expected: "uno quetzal con cincuenta centavos",
+        expected: "un quetzal con cincuenta centavos",
       },
       {
         value: 2.05,
         options: { currency: "GTQ" },
         expected: "dos quetzales con cinco centavos",
       },
-      // Test specific GTQ amounts without zero cents
+      // Test specific GTQ amounts with zero cents (should use "exacto/exactos")
+      {
+        value: 1.0,
+        options: { currency: "GTQ" },
+        expected: "un quetzal exacto",
+      },
       {
         value: 7650,
         options: { currency: "GTQ" },
-        expected: "siete mil seiscientos cincuenta quetzales",
+        expected: "siete mil seiscientos cincuenta quetzales exactos",
       },
       {
         value: 7650.0,
         options: { currency: "GTQ" },
-        expected: "siete mil seiscientos cincuenta quetzales",
+        expected: "siete mil seiscientos cincuenta quetzales exactos",
       },
       {
         value: 3410,
         options: { currency: "GTQ" },
-        expected: "tres mil cuatrocientos diez quetzales",
+        expected: "tres mil cuatrocientos diez quetzales exactos",
       },
       {
         value: 3410.0,
         options: { currency: "GTQ" },
-        expected: "tres mil cuatrocientos diez quetzales",
+        expected: "tres mil cuatrocientos diez quetzales exactos",
       },
       {
         value: 2444,
         options: { currency: "GTQ" },
-        expected: "dos mil cuatrocientos cuarenta y cuatro quetzales",
+        expected: "dos mil cuatrocientos cuarenta y cuatro quetzales exactos",
       },
       {
         value: 2444.0,
         options: { currency: "GTQ" },
-        expected: "dos mil cuatrocientos cuarenta y cuatro quetzales",
+        expected: "dos mil cuatrocientos cuarenta y cuatro quetzales exactos",
       },
-      // Test with explicit zero cents
+      // Test with explicit zero cents - in GTQ the "exactos" should still override
       {
         value: 7650,
         options: { currency: "GTQ", showZeroCents: true },
-        expected: "siete mil seiscientos cincuenta quetzales con cero centavos",
+        expected: "siete mil seiscientos cincuenta quetzales exactos",
       },
       {
-        value: 3410,
+        value: 1.0,
         options: { currency: "GTQ", showZeroCents: true },
-        expected: "tres mil cuatrocientos diez quetzales con cero centavos",
-      },
-      {
-        value: 2444,
-        options: { currency: "GTQ", showZeroCents: true },
-        expected:
-          "dos mil cuatrocientos cuarenta y cuatro quetzales con cero centavos",
+        expected: "un quetzal exacto",
       },
       // Test without cents
       {
         value: 1.5,
         options: { currency: "EUR", cents: false },
-        expected: "uno euro",
+        expected: "un euro",
       },
       {
         value: 2.99,
@@ -221,7 +218,7 @@ describe("Num2WordES", () => {
       {
         value: 1.5,
         options: { currency: "EUR", separator: "y" },
-        expected: "uno euro y cincuenta céntimos",
+        expected: "un euro y cincuenta céntimos",
       },
       {
         value: 2.05,

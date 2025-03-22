@@ -1,4 +1,4 @@
-import { describe, expect, test, beforeEach, it } from "@jest/globals";
+import { describe, expect, test, beforeEach, it } from "vitest";
 import { Num2WordEN } from "./en";
 import { CurrencyOptions } from "../types";
 
