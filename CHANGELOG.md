@@ -5,7 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-03-22
+## [1.0.1] - 2024-03-22
+
+### Added
+
+- Support for currency conversion in CLI with new options:
+  - `-c, --currency <code>` for currency specification (e.g., EUR, USD, GTQ)
+  - `-s, --separator <word>` for custom separators between whole and decimal parts
+  - `--no-cents` flag to exclude cents from output
+  - `--show-zero-cents` flag to display zero cents
+- Special handling for Guatemalan Quetzal (GTQ) currency:
+  - For zero cents: "exacto" (singular) or "exactos" (plural) suffix
+  - E.g., "veintinueve quetzales exactos" for 29.00 GTQ
+- Comprehensive tests for large numbers and currency conversion with decimals
+
+### Fixed
+
+- Improved handling of large numbers in Spanish (>100,000)
+- Fixed grammar for singular currency forms in Spanish (e.g., "un quetzal" instead of "uno quetzal")
+- Correct handling of decimal values in all currencies
+- Converted test framework from Jest to Vitest
+
+## [1.0.0] - 2024-03-22
 
 ### Added
 

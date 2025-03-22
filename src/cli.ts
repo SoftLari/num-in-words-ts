@@ -1,10 +1,20 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import { Num2WordBase } from "./base";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 // Import language converters
 import { Num2WordEN } from "./lang/en";
 import { Num2WordES } from "./lang/es";
+
+// Get package version from package.json
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const packageJson = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "../package.json"), "utf8")
+);
+const version = packageJson.version;
 
 // Create a language map
 const languages: { [key: string]: new () => Num2WordBase } = {
@@ -30,7 +40,7 @@ const program = new Command();
 program
   .name("num-in-words")
   .description("Convert numbers to words in multiple languages")
-  .version("1.0.0")
+  .version(version)
   .option("-l, --language <code>", 'Language code (default: "en")', "en")
   .option("-o, --ordinal", "Convert to ordinal words", false)
   .option("-n, --ordinal-num", "Convert to ordinal number", false)
